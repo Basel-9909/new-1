@@ -169,12 +169,12 @@ const adult = [
   {id:'polo',name:'تيشيرت بولو',category:'تيشيرتات',group:'polo',note:'ياقة بولو · قطن مريح'},
   {id:'shirt',name:'قميص رجالي',category:'قمصان',group:'shirt',note:'قماش ناعم · إطلالة مرتبة'},
   {id:'boxer',name:'بوكسر رجالي',category:'ملابس بيت',group:'boxer',note:'قطن ناعم وراحة طول اليوم'},
-  {id:'hoodie',name:'هودي قطن',category:'ملابس بيت',group:'hoodie',note:'قطن مصري · مناسب لكل يوم',price:800},
-  {id:'pants',name:'بنطلون قطن',category:'بنطلونات',group:'pants',note:'قطن مصري · قصة مريحة',price:450},
+  {id:'hoodie',name:'هودي قطن',category:'ملابس بيت',group:'hoodie',note:'قطن مصري · مناسب لكل يوم',price:تواصل معنا},
+  {id:'pants',name:'بنطلون قطن',category:'بنطلونات',group:'pants',note:'قطن مصري · قصة مريحة',price:تواصل معنا},
   {id:'oversize',name:'تيشيرت أوفر سايز',category:'تيشيرتات',group:'oversize',note:'قصة مريحة · قطن مصري'},
   {id:'full',name:'طقم قطن كامل',category:'ملابس بيت',group:'full',note:'راحة البيت بقطن مصري'},
   {id:'short',name:'شورت قطن',category:'ملابس بيت',group:'short',note:'خفيف ومريح'},
-  {id:'kids',name:'طقم أطفال كامل',category:'أطفال',group:'kids6',note:'طقم كامل · اختار السن واللون',kids:true,price:600}
+  {id:'kids',name:'طقم أطفال كامل',category:'أطفال',group:'kids6',note:'طقم كامل · اختار السن واللون',kids:true,price:تواصل معنا }
 ];
 const colorName=i=>"لون " + (i+1);
 const colors=['#e9e4d8','#292929','#78806e','#a6a6a2','#263449','#bba98c','#aa6470','#587d83','#c49a5d'];
@@ -183,7 +183,7 @@ const app=document.querySelector('#app');
 const $=s=>document.querySelector(s);
 const slugName={vcut:'تيشيرت V Cut',tmt:'تيشيرت TMT',polo:'بولو',shirt:'قميص',boxer:'بوكسر',hoodie:'هودي',oversize:'أوفر سايز',full:'طقم كامل',short:'شورت',kids:'طقم أطفال'};
 function enrich(){products=adult.map(p=>{let group=p.group==='kids6'?images.kids6:images[p.group]||[];if(p.extra)group=[...group,...p.extra.flatMap(x=>images[x]||[])];return {...p,images:group}});}
-function priceText(p){return p.price?`${p.price} ج.م`:'السعر يضاف قريباً'}
+function priceText(p){return p.price?`${p.price} ج.م`:'تواصل معنا  '}
 function swatchColor(i){return colors[i%colors.length]}
 function filteredProducts(){return products.filter(p=>(activeFilter==='الكل'||p.category===activeFilter)&&(p.name.toLowerCase().includes(searchTerm.toLowerCase())||p.category.toLowerCase().includes(searchTerm.toLowerCase())))}
 function home(){currentProduct=null;const cats=['الكل','تيشيرتات','قمصان','ملابس بيت','بنطلونات','أطفال'];let list=filteredProducts();app.innerHTML=`<section class="hero" id="home"><img class="hero-slide-image" id="heroImage" src="assets/oversize-01.jpeg" alt="تشكيلة Egyptian Cotton Factory"><div class="hero-copy"><div class="eyebrow" id="heroEyebrow">EGYPTIAN COTTON · SINCE 2023</div><h1 id="heroTitle">قطن مصري<br>على أصوله.</h1><p id="heroDescription">اختار قطعتك المفضلة، وخلي راحتك تبدأ من هنا.</p><div class="hero-price" id="heroPrice"></div><button class="button button-light" id="heroOpen">اكتشف المنتج <span>←</span></button><div class="hero-controls"><button class="hero-arrow" id="heroPrev" aria-label="المنتج السابق">‹</button><div class="hero-dots" id="heroDots"></div><button class="hero-arrow" id="heroNext" aria-label="المنتج التالي">›</button></div></div><div class="hero-progress" id="heroProgress"></div></section>
